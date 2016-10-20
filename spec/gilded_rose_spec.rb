@@ -5,6 +5,8 @@ describe GildedRose do
 
 subject(:rose) {described_class.new}
 subject(:item) {Item.new('Aged Brie', 3, 4)}
+subject(:item1) {Item.new('Sulfuras', 1, 4)}
+
 
   describe "#update_quality" do
     it "does not change the name" do
@@ -17,6 +19,13 @@ subject(:item) {Item.new('Aged Brie', 3, 4)}
     it 'quality degrades by one each day' do
       rose.quality_degrades(item)
       expect(item.quality).to eq 3
+    end
+
+    it 'quality degrades twice as fast after sell by date' do
+      rose.quality_degrades(item1)
+      rose.quality_degrades(item1)
+      rose.quality_degrades(item1)
+      expect(item1.quality).to eq 0
     end
   end
 
