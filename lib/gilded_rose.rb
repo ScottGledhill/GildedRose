@@ -1,12 +1,14 @@
-require 'products'
-
 class GildedRose
-include ProductList
+  attr_reader :item
+
   def initialize
 
   end
 
-  def update_quality
+  def update_quality(item)
+    @item = item
+  end
 
+  def quality_degrades(item)
   end
 end
