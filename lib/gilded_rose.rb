@@ -10,5 +10,6 @@ class GildedRose
   end
 
   def quality_degrades(item)
+    item.quality -= 1
   end
 end
