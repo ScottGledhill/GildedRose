@@ -9,9 +9,12 @@ class GildedRose
   end
 
   def quality_degrades(item)
-    item.quality -= 1
+    past_sell_by_date?(item) ? item.quality -=2 : item.quality -= 1
+    item.sell_in -= 1
   end
 
-  def past_sell_by_date?
+  def past_sell_by_date?(item)
+    item.sell_in <= 0 ? true : false
   end
+
 end
