@@ -24,6 +24,12 @@ subject(:item1) {Item.new('Sulfuras', 1, 4)}
     it 'quality degrades twice as fast after sell by date' do
       rose.quality_degrades(item1)
       rose.quality_degrades(item1)
+      expect(item1.quality).to eq 1
+    end
+
+    it 'quality must never be negative' do
+      rose.quality_degrades(item1)
+      rose.quality_degrades(item1)
       rose.quality_degrades(item1)
       expect(item1.quality).to eq 0
     end
